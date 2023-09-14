@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>YouRL-Hello Universe</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL Shortner</h1>
+      <form action="/" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only">URL</label>
+        <input
+          required
+          placeholder="Enter URL"
+          type="url"
+          name="url"
+          id="url"
+          class="form-control mr-1 col"
+        />
+        <button type="submit" class="btn btn-success">Shorten my link!</button>
+      </form>
+
+      <table class="table table-boderless table-responsive">
+        <caption>
+          List of URLs and click counts
+        </caption>
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>Shortened URL</th>
+            <th>Total Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% url.forEach(url => { %>
+
+          <tr>
+            <td>
+              <a href="https://<%= url.url%>"><%= url.url %></a>
+            </td>
+            <td><a href="<%= url.generatedUrl %>"><%= url.generatedUrl %> </a></td>
+            <td><%= url.clicks %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
